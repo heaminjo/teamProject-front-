@@ -27,7 +27,7 @@ const AxiosApi = {
   },
   // 회원 가입 여부 확인
   memberRegCheck: async (email) => {
-    return await axios.get(KH_DOMAIN + `/auth/exists?email=${email}`);
+    return await axios.get(KH_DOMAIN + `/auth/exists/${email}`);
   },
 
   // 회원 탈퇴
