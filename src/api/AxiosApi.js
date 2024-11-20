@@ -16,12 +16,15 @@ const AxiosApi = {
   },
 
   // 회원 가입
-  signup: async (email, pwd, alias, address) => {
+  signup: async (email, pwd, alias, address, name, phone) => {
     const member = {
       email: email,
       alias: alias,
       address: address,
       pwd: pwd,
+      name: name,
+      phone,
+      phone,
     };
     return await axios.post(KH_DOMAIN + "/auth/signup", member);
   },
