@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/AxiosApi";
+import { UserContext } from "../../context/UserStore";
 const Login = () => {
+  const navigate = useNavigate();
+
+  const context = useContext(UserContext);
+  // const { isLogin, setIsLogin } = context; //로그인 여부를 전역 저장
+
   // 키보드 입력 받기
   const [inputEmail, setInputEmail] = useState("");
   const [inputPwd, setInputPwd] = useState("");
@@ -13,8 +19,6 @@ const Login = () => {
   //에러메세지
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPwd, setErrorPwd] = useState("");
-
-  const navigate = useNavigate();
 
   //입력창 갱신
   const onChangeEmail = (e) => {
@@ -47,7 +51,11 @@ const Login = () => {
       const rsp = await AxiosApi.login(inputEmail, inputPwd);
       console.log(rsp.data);
       alert("로그인에 성공하였습니다.");
-      navigate("/");
+
+      //로그인 여부 context 저장
+      localStorage.setItem("email", inputEmail); // 저장
+      localStorage.setItem("isLogin", "TRUE");
+      navigate("/"); //메인홈으로 이동
     } catch (e) {
       alert("로그인에 실패하였습니다.");
       navigate("/");
