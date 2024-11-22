@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/AxiosApi";
+import SignupComp from "../../Component/Signup/SignupStyle";
+import { Addr, Input, InputButton } from "../../Component/Signup/SignupInput";
+import Button from "../../util/Button";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -31,6 +34,33 @@ const Signup = () => {
   const [isAddress, setIsAddress] = useState(false);
   const [isName, setIsName] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
+  const [isJoin, setIsJoin] = useState(false);
+
+  useEffect(() => {
+    if (
+      isEmail &&
+      isAddress &&
+      isAlias &&
+      isConPwd &&
+      isEmailCheck &&
+      isName &&
+      isPhone &&
+      isPwd
+    ) {
+      setIsJoin(true);
+    } else {
+      setIsJoin(false);
+    }
+  }, [
+    isEmail,
+    isAddress,
+    isAlias,
+    isConPwd,
+    isEmailCheck,
+    isName,
+    isPhone,
+    isPwd,
+  ]);
 
   //이메일 입력
   const onChangeEmail = (e) => {
@@ -142,19 +172,23 @@ const Signup = () => {
 
   //회원가입
   const onClickJoin = async () => {
-    const resp = AxiosApi.signup(
-      inputEmail,
-      inputPwd,
-      inputAlias,
-      inputAddress,
-      inputName,
-      inputPhone
-    );
-    if (resp.data !== null) {
-      alert("회원가입에 성공했습니다.");
-      navigate("/");
+    if (isJoin === false) {
+      alert("모두 입력해주셔야합니다.");
     } else {
-      alert("회원가입에 실패했습니다.");
+      const resp = AxiosApi.signup(
+        inputEmail,
+        inputPwd,
+        inputAlias,
+        inputAddress,
+        inputName,
+        inputPhone
+      );
+      if (resp.data !== null) {
+        alert("회원가입에 성공했습니다.");
+        navigate("/");
+      } else {
+        alert("회원가입에 실패했습니다.");
+      }
     }
   };
   //이메일 중복 여부 확인
@@ -180,83 +214,73 @@ const Signup = () => {
   };
   return (
     <>
-      <h1>회원가입</h1>
-
-      <input
-        type="email"
-        placeholder="이메일"
-        value={inputEmail}
-        onChange={onChangeEmail}
-      />
-      {isEmailCheck ? (
-        <span>Good!</span>
-      ) : (
-        <button onClick={() => emailCheck(inputEmail)}>중복 확인</button>
-      )}
-      <span>{errorEmail}</span>
-      <br />
-      <input
-        type="password"
-        placeholder="비밀번호"
-        value={inputPwd}
-        onChange={onChangePwd}
-      />
-      <span>{errorPwd}</span>
-      <br />
-      <input
-        type="password"
-        placeholder="비밀번호 확인"
-        value={inputConPwd}
-        onChange={onChangeConPwd}
-      />
-      <span>{errorConPwd}</span>
-      <br />
-      <input
-        type="text"
-        placeholder="이름"
-        onChange={onChangeName}
-        value={inputName}
-      />
-      <span>{errorName}</span>
-      <br />
-      <input
-        type="text"
-        placeholder="별명"
-        value={inputAlias}
-        onChange={onChangeAlias}
-      />
-      <span>{errorAlias}</span>
-      <br />
-      <input
-        type="tel"
-        placeholder="휴대번호(- 제외)"
-        onChange={onChangePhone}
-        value={inputPhone}
-      />
-      <span>{errorPhone}</span>
-      <br />
-      <input
-        type="text"
-        placeholder="주소"
-        onChange={onChangeAddress}
-        value={inputAddress}
-      />
-      <span>{errorAddress}</span>
-      <br />
-      {isEmail &&
-      isPwd &&
-      isAddress &&
-      isAlias &&
-      isConPwd &&
-      isName &&
-      isPhone &&
-      isEmailCheck ? (
-        <button enabled onClick={onClickJoin}>
-          회원가입
-        </button>
-      ) : (
-        <button disabled>회원가입</button>
-      )}
+      <SignupComp>
+        <div className="container">
+          <h2>회원가입</h2>
+          <div className="inputBox">
+            <InputButton
+              value={inputEmail}
+              holder="이메일"
+              changeEvt={onChangeEmail}
+              type="email"
+              btnChild="중복 체크"
+              active={isEmail} //이메일 유효성이 맞는지 맞다면 버튼 가능
+              clickEvt={emailCheck} //중복검사 함수
+              msg={errorEmail}
+              msgType={isEmail}
+            />
+            <Input
+              value={inputPwd}
+              holder="패스워드"
+              changeEvt={onChangePwd}
+              type="password"
+              msg={errorPwd}
+              msgType={isPwd}
+            />
+            <Input
+              value={inputConPwd}
+              holder="패스워드 확인"
+              changeEvt={onChangeConPwd}
+              type="password"
+              msg={errorConPwd}
+              msgType={isConPwd}
+            />
+            <Input
+              value={inputName}
+              holder="이름"
+              changeEvt={onChangeName}
+              msg={errorName}
+              msgType={isName}
+            />
+            <Input
+              value={inputAlias}
+              holder="별명"
+              changeEvt={onChangeAlias}
+              msg={errorName}
+              msgType={isName}
+            />
+            <Input
+              value={inputPhone}
+              holder="휴대번호"
+              changeEvt={onChangePhone}
+              msg={errorPhone}
+              msgType={isPhone}
+            />
+            <Input
+              value={inputAddress}
+              holder="주소"
+              changeEvt={onChangeAddress}
+              msg={errorAddress}
+              msgType={isAddress}
+            />
+            {isJoin ? (
+              <Button children="회원가입" clickEvt={onClickJoin} width="100%" />
+            ) : (
+              <Button children="회원가입" clickEvt={onClickJoin} width="100%" />
+            )}
+          </div>
+        </div>
+      </SignupComp>
     </>
   );
 };
