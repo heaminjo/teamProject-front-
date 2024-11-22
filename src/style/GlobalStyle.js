@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
   main {
     padding-top: 80px;
     min-height: 60vh;
-  }
+    background-color: #1f1926;
+    }
   .container {
     max-width: 1200px;
     margin: 0 auto;
