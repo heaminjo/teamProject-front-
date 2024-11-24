@@ -10,7 +10,7 @@ const ButtonComp = styled.button`
   font-size: ${(props) => props.fontSize || "1em"};
   border: 3px solid #fff;
   border-radius: 5px;
-  transition: 0.4s ease-in;
+  transition: 0.2s ease-in;
   background-color: #1f1926;
   cursor: pointer;
   &.false:disabled {
@@ -40,7 +40,6 @@ const Button = (props) => {
   return (
     <>
       <ButtonComp
-        disabled={disabled}
         color={color}
         $front={front}
         $back={back}

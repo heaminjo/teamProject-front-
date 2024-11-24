@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 const HeaderComp = styled.header`
   width: 100vw;
   height: 80px;
-  background-color: rgba(24, 18, 43, 0.7);
+  background-color: #0c0125;
   backdrop-filter: blur(40px);
   position: fixed;
   top: 0;
@@ -18,17 +18,13 @@ const HeaderComp = styled.header`
     width: 80%;
     margin: 0 auto;
     height: 100%;
-    //모바일 메뉴
-    .m-menu {
-      display: none;
-      cursor: pointer;
-    }
     //로고
     .logo {
       height: 100%;
       display: flex;
       flex-grow: 1;
       align-items: center;
+      color: #fef7ff;
       img {
         height: 80%;
         cursor: pointer;
@@ -50,7 +46,7 @@ const HeaderComp = styled.header`
           height: 100%;
           flex-grow: 1;
           position: relative;
-          font-size: 1.2em;
+          font-size: 18px;
           font-weight: 600;
           padding: 10px 20px;
           cursor: pointer;
@@ -60,11 +56,11 @@ const HeaderComp = styled.header`
             align-items: center;
             height: 100%;
             cursor: pointer;
-            transition: 0.2s ease-in;
-          }
-          &:hover {
-            .m-title {
-              color: var(--LIGHTVIO);
+            transition: 0.1s ease-in; //변화 속도
+            color: #d8e4ea;
+            &:hover {
+              cursor: pointer;
+              font-size: 20px;
             }
           }
         }
@@ -75,12 +71,17 @@ const HeaderComp = styled.header`
       display: flex;
       height: 100%;
       align-items: center;
+      justify-content: end;
       flex-grow: 0.5;
       .authBtn {
         font-size: 13px;
         padding: 10px 10px;
+        text-decoration: none;
+        color: #f7ebff;
+        transition: 0.2s ease-in; //변화 속도
         &:hover {
           cursor: pointer;
+          color: #d1edf4;
         }
       }
     }
@@ -121,34 +122,8 @@ const HeaderComp = styled.header`
               padding: 20px 0;
               background-color: var(--IVORY);
             }
-            .sub-menu {
-              height: auto;
-              position: static;
-              border-radius: 0;
-              li {
-                font-size: 1.2em;
-                padding: 20px 0;
-              }
-            }
-            &:hover {
-              .sub-menu {
-                border: none;
-                li {
-                  &:hover {
-                    font-weight: 600;
-                  }
-                }
-              }
-            }
           }
         }
-      }
-      .logo {
-        display: flex;
-        justify-content: center;
-      }
-      .log-icon {
-        flex-grow: 0;
       }
     }
   }

@@ -31,7 +31,7 @@ const Header = () => {
               navigate("/");
             }}
           >
-            로고
+            펫타우너
           </h1>
         </div>
         <Nav />

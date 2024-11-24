@@ -1,6 +1,6 @@
 //전체에 적용
 import { createGlobalStyle } from "styled-components";
-
+import backImg from "../images/pexels-sanaan-3125171.jpg";
 const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
   main {
     padding-top: 80px;
     min-height: 60vh;
-    background-color: #1f1926;
+    background-image: url(${backImg});
+    background-size: cover;
     }
   .container {
     max-width: 1200px;

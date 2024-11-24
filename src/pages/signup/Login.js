@@ -2,6 +2,53 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/AxiosApi";
 import { UserContext } from "../../context/UserStore";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Button from "../../util/Button";
+const LoginCom = styled.section`
+  width: 100%;
+  height: 80vh;
+  .container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 65px;
+    padding-top: 50px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .inputBox {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+
+    input {
+      height: 40px;
+      padding-left: 5px;
+      outline: none;
+    }
+    button {
+      margin-top: 90px;
+    }
+  }
+  .menu {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+    }
+  }
+`;
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -57,32 +104,34 @@ const Login = () => {
       localStorage.setItem("isLogin", "TRUE");
       navigate("/"); //메인홈으로 이동
     } catch (e) {
-      alert("로그인에 실패하였습니다.");
-      navigate("/");
+      alert("존재하지 않는 아이디입니다.");
     }
   };
   return (
-    <>
-      <input
-        type="text"
-        placeholder="이메일"
-        onChange={onChangeEmail}
-        value={inputEmail}
-      />
-      <br />
-      <span>{errorEmail}</span>
-      <br />
-      <input
-        type="text"
-        placeholder="비밀번호"
-        onChange={onChangePwd}
-        value={inputPwd}
-      />
-      <br />
-      <p>{errorPwd}</p>
-      <br />
-      <button onClick={onClickLogin}>로그인</button>
-    </>
+    <LoginCom>
+      <div className="container">
+        <h1>로그인</h1>
+        <div className="inputBox">
+          <input
+            type="text"
+            placeholder="이메일"
+            onChange={onChangeEmail}
+            value={inputEmail}
+          />
+          <input
+            type="password"
+            placeholder="비밀번호"
+            onChange={onChangePwd}
+            value={inputPwd}
+          />
+          <Button children="로그인" clickEvt={onClickLogin} width="100%" />
+          <div className="menu">
+            <Link to={"/Signup"}>회원가입</Link>
+            <Link to={"/FindPwd"}>비밀번호 찾기</Link>
+          </div>
+        </div>
+      </div>
+    </LoginCom>
   );
 };
 export default Login;

@@ -11,8 +11,8 @@ const AxiosApi = {
     return await axios.post(KH_DOMAIN + "/auth/login", login);
   },
   //회원 조회
-  memberGet: async (id) => {
-    return await axios.get(KH_DOMAIN + `/member/detail?id=${id}`);
+  memberGet: async (email) => {
+    return await axios.get(KH_DOMAIN + `/member/detail?email=${email}`);
   },
 
   // 회원 가입
@@ -28,7 +28,7 @@ const AxiosApi = {
     };
     return await axios.post(KH_DOMAIN + "/auth/signup", member);
   },
-  // 회원 가입 여부 확인
+  // 중복체크
   memberRegCheck: async (email) => {
     return await axios.get(KH_DOMAIN + `/auth/exists/${email}`);
   },

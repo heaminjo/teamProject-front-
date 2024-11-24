@@ -12,8 +12,6 @@ const SignupComp = styled.section`
     .inputBox {
       max-width: 400px;
       margin: 0 auto;
-      border: 3px solid #fff;
-      border-radius: 20px;
 
       padding: 20px;
       .agreementBox {
