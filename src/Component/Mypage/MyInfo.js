@@ -12,20 +12,20 @@ const MyInfoComp = styled.section`
     margin-bottom: 0;
   }
   .container {
-    background-color: #ccc;
-    opacity: 0.5;
+    background-color: #777;
+    opacity: 0.7;
     border-radius: 50px;
     padding: 50px;
-    padding-bottom: 100px;
+    padding-bottom: 25px;
     h2 {
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       font-size: 30px;
     }
     .wrapper {
       /* outline: 1px solid yellow; */
       display: flex;
       justify-content: center;
-      align-items: center;
+      /* align-items: center; */
       .userProfile {
         width: 250px;
         margin-right: 5%;
@@ -46,9 +46,26 @@ const MyInfoComp = styled.section`
           }
         }
       }
+      .userData {
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+        .userAlias {
+          font-size: 30px;
+          font-weight: bold;
+        }
+        .userFollow {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          font-size: 13px;
+        }
+      }
       .userContent {
         width: 50%;
         letter-spacing: -0.8px;
+
         /* outline: 1px solid pink; */
         .userBox {
           margin-bottom: 20px;
@@ -77,15 +94,15 @@ const MyInfoComp = styled.section`
       }
     }
     .buttonBox {
-      /* outline: 1px solid blue; */
       display: flex;
       justify-content: end;
-      padding-right: 10%;
-      margin-top: 40px;
       button {
-        &:first-child {
-          margin-right: 12px;
-        }
+        width: 100px;
+        height: 30px;
+        margin-top: 30px;
+        background-color: #0c0125;
+        color: #fff;
+        font-weight: bold;
       }
     }
     @media only screen and (max-width: 768px) {
@@ -137,6 +154,9 @@ const MyInfoComp = styled.section`
 const MyInfo = ({ memberInfo }) => {
   const navigate = useNavigate();
 
+  const onClickModify = () => {
+    navigate("/Mypage/UserModify");
+  };
   return (
     <>
       <MyInfoComp>
@@ -156,19 +176,24 @@ const MyInfo = ({ memberInfo }) => {
                   />
                 }
               </div>
+              <div className="userData">
+                <div className="userAlias">
+                  <p>{memberInfo.alias}</p>
+                </div>
+                <div className="userFollow">
+                  <p>팔로워 {memberInfo.follower}</p>
+                  <p>팔로우 {memberInfo.followee}</p>
+                </div>
+              </div>
             </div>
             <div className="userContent">
               <div className="userBox">
-                <p className="title">이름</p>
-                <p>{memberInfo && memberInfo.name}</p>
-              </div>
-              <div className="userBox">
-                <p className="title">닉네임</p>
-                <p>{memberInfo && memberInfo.alias}</p>
-              </div>
-              <div className="userBox">
                 <p className="title">이메일</p>
                 <p>{memberInfo && memberInfo.email}</p>
+              </div>
+              <div className="userBox">
+                <p className="title">이름</p>
+                <p>{memberInfo && memberInfo.name}</p>
               </div>
               <div className="userBox">
                 <p className="title">전화번호</p>
@@ -176,7 +201,10 @@ const MyInfo = ({ memberInfo }) => {
               </div>
               <div className="userBox">
                 <p className="title">주소</p>
-                <p>{memberInfo && memberInfo.addr}</p>
+                <p>{memberInfo && memberInfo.address}</p>
+              </div>
+              <div className="buttonBox">
+                <button onClick={onClickModify} children="정보수정"></button>
               </div>
             </div>
           </div>
