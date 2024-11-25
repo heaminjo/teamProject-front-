@@ -12,6 +12,7 @@ import Mainpage from "./pages/Mainpage";
 import Layout from "./pages/Layout";
 import GlobalStyle from "./style/GlobalStyle";
 import Mypage from "./pages/member/Mypage";
+import UserModify from "./pages/member/UserModify";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/Mypage" element={<Mypage />} />
+            <Route path="/Mypage/UserModify" element={<UserModify />} />
           </Route>
         </Routes>
       </Router>
