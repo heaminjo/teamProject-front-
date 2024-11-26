@@ -46,6 +46,9 @@ export const InputButton = (props) => {
     msg,
     msgType,
     disabled,
+    width,
+    height,
+    back,
   } = props;
 
   return (
@@ -62,8 +65,9 @@ export const InputButton = (props) => {
           children={btnChild}
           active={active}
           clickEvt={clickEvt}
-          width="30%"
-          height="48px"
+          width={width}
+          height={height}
+          back={back}
           fontSize="14px"
         />
       </div>
@@ -117,6 +121,7 @@ export const Input = (props) => {
         value={value}
         placeholder={holder}
         onChange={(e) => changeEvt(e)}
+        disabled={disabled}
       />
       <div className={`msg ${msgType ? "" : "fail"}`}>{msg}</div>
     </InputComp>
