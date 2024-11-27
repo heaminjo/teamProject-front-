@@ -4,7 +4,9 @@ import { styled } from "styled-components";
 const HeaderComp = styled.header`
   width: 100vw;
   height: 80px;
-  background-color: #0c0125;
+  /* background-color: #0c0125; */
+  background-color: #fff;
+  opacity: 0.9;
   backdrop-filter: blur(40px);
   position: fixed;
   top: 0;
@@ -24,7 +26,7 @@ const HeaderComp = styled.header`
       display: flex;
       flex-grow: 1;
       align-items: center;
-      color: #fef7ff;
+      cursor: pointer;
       img {
         height: 80%;
         cursor: pointer;
@@ -33,6 +35,7 @@ const HeaderComp = styled.header`
       }
     }
     //메뉴
+
     nav {
       text-align: center;
       height: 100%;
@@ -49,6 +52,7 @@ const HeaderComp = styled.header`
           font-size: 18px;
           font-weight: 600;
           padding: 10px 20px;
+          color: #333;
           cursor: pointer;
           .menuBtn {
             display: flex;
@@ -56,11 +60,37 @@ const HeaderComp = styled.header`
             align-items: center;
             height: 100%;
             cursor: pointer;
-            transition: 0.1s ease-in; //변화 속도
-            color: #d8e4ea;
-            &:hover {
-              cursor: pointer;
-              font-size: 20px;
+            transition: 0.2s ease-in;
+          }
+          .subMenu {
+            width: 100%;
+            background-color: #fff;
+
+            height: 0; //안보이게 높이값과 hidden
+            overflow: hidden; //
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transition: height 0.8s ease-out;
+            li {
+              font-size: 1.2rem;
+              font-weight: 400;
+              color: #111;
+              transition: 0.2s ease-in;
+              &:hover {
+                /* background-color: #484554; */
+                font-weight: bold;
+              }
+            }
+          }
+          &:hover {
+            .menuBtn {
+            }
+            .subMenu {
+              height: auto;
+              li {
+                padding: 20px 0;
+              }
             }
           }
         }
@@ -77,7 +107,7 @@ const HeaderComp = styled.header`
         font-size: 13px;
         padding: 10px 10px;
         text-decoration: none;
-        color: #f7ebff;
+        color: #333;
         transition: 0.2s ease-in; //변화 속도
         &:hover {
           cursor: pointer;

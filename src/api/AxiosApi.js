@@ -10,10 +10,6 @@ const AxiosApi = {
     };
     return await axios.post(KH_DOMAIN + "/auth/login", login);
   },
-  //회원 조회
-  memberGet: async (email) => {
-    return await axios.get(KH_DOMAIN + `/member/detail?email=${email}`);
-  },
 
   // 회원 가입
   signup: async (email, pwd, alias, address, name, phone) => {
@@ -23,22 +19,13 @@ const AxiosApi = {
       address: address,
       pwd: pwd,
       name: name,
-      phone,
-      phone,
+      phone: phone,
     };
     return await axios.post(KH_DOMAIN + "/auth/signup", member);
   },
   // 중복체크
   memberRegCheck: async (email) => {
     return await axios.get(KH_DOMAIN + `/auth/exists/${email}`);
-  },
-
-  // 회원 탈퇴
-  memberDel: async (id) => {
-    const del = {
-      id: id,
-    };
-    return await axios.post(KH_DOMAIN + "/user/delete", del);
   },
   // 게시글 조회
   boardList: async () => {

@@ -7,13 +7,14 @@ const MyInfoComp = styled.section`
   width: 100%; /* 보통 높이값은 따로 주지 않음!(배너를 잡을 경우에는 높이값을 줌) */
   padding-top: 80px;
   padding-bottom: 10px;
+  background-color: #0c0125;
   /* outline: 1px solid yellow; */
   @media only screen and (max-width: 480px) {
     margin-bottom: 0;
   }
   .container {
-    background-color: #777;
-    opacity: 0.7;
+    background-color: #fff;
+
     border-radius: 50px;
     padding: 50px;
     padding-bottom: 25px;
@@ -86,7 +87,7 @@ const MyInfoComp = styled.section`
             }
             &:last-child {
               padding-left: 10px;
-              border-bottom: 1px solid white;
+              border-bottom: 1px solid #ddd;
               line-height: 1.2;
             }
           }

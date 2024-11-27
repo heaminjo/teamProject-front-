@@ -13,8 +13,8 @@ const GlobalStyle = createGlobalStyle`
   main {
     padding-top: 80px;
     min-height: 60vh;
-    background-image: url(${backImg});
-    background-size: cover;
+    /* background-image: url(${backImg});
+    background-size: cover; */
     }
   .container {
     max-width: 1200px;

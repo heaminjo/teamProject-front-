@@ -5,17 +5,21 @@ import { UserContext } from "../../context/UserStore";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../util/Button";
+import backImg from "../../images/pexels-sanaan-3125171.jpg";
 const LoginCom = styled.section`
   width: 100%;
   height: 80vh;
+  background-image: url(${backImg});
+  background-size: cover;
   .container {
     width: 80%;
     height: 100%;
     margin: 0 auto;
-    margin-top: 65px;
+    /* margin-top: 65px; */
     padding-top: 50px;
   }
   h1 {
+    margin-top: 65px;
     text-align: center;
     margin-bottom: 20px;
     color: #fff;
@@ -34,6 +38,7 @@ const LoginCom = styled.section`
       outline: none;
     }
     button {
+      background-color: #1f1926;
       margin-top: 90px;
     }
   }

@@ -13,6 +13,7 @@ import Layout from "./pages/Layout";
 import GlobalStyle from "./style/GlobalStyle";
 import Mypage from "./pages/member/Mypage";
 import UserModify from "./pages/member/UserModify";
+import Board from "./pages/board/Board";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
             <Route path="/Signup" element={<Signup />} />
             <Route path="/Mypage" element={<Mypage />} />
             <Route path="/Mypage/UserModify" element={<UserModify />} />
+            <Route path="/Board/:category" element={<Board />} />
           </Route>
         </Routes>
       </Router>

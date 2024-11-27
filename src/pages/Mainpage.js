@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MainTopComp from "../Component/Main/MainTop";
 
 const Block = styled.div`
   height: 500px;
 `;
 const Mainpage = () => {
   return (
-    <>
+    <MainTopComp>
       <h1>메인페이지 입니다.</h1>
       {/* Link : 프로젝트 내에서 페이지 전환 */}
       <Link to={"/Login"}>로그인</Link>
@@ -17,7 +18,7 @@ const Mainpage = () => {
       <Block>ㅎㅇ</Block>
       <Block>ㅎㅇ</Block>
       <Block>ㅎㅇ</Block>
-    </>
+    </MainTopComp>
   );
 };
 export default Mainpage;

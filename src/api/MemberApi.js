@@ -7,6 +7,17 @@ const MemberApi = {
     return await axios.get(Common.KH_DOMAIN + `/member/detail/${email}`);
   },
 
+  //회원 수정
+  memberModify: async (email, pwd, alias, address, phone) => {
+    const member = {
+      email: email,
+      alias: alias,
+      address: address,
+      pwd: pwd,
+      phone: phone,
+    };
+    return await axios.put(Common.KH_DOMAIN + "/member/modify", member);
+  },
   // 회원 탈퇴
   memberDel: async (id) => {
     const del = {

@@ -228,6 +228,8 @@ const Signup = () => {
               clickEvt={emailCheck} //중복검사 함수
               msg={errorEmail}
               msgType={isEmail}
+              width="30%"
+              height="48px"
             />
             <Input
               value={inputPwd}
@@ -273,11 +275,7 @@ const Signup = () => {
               msg={errorAddress}
               msgType={isAddress}
             />
-            {isJoin ? (
-              <Button children="회원가입" clickEvt={onClickJoin} width="100%" />
-            ) : (
-              <Button children="회원가입" clickEvt={onClickJoin} width="100%" />
-            )}
+            <Button children="회원가입" clickEvt={onClickJoin} width="100%" />
           </div>
         </div>
       </SignupComp>

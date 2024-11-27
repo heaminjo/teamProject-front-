@@ -6,12 +6,12 @@ const ButtonComp = styled.button`
   width: ${(props) => props.width || "200px"};
   height: ${(props) => props.height || "40px"};
   color: ${(props) => props.color || "white"};
+  background-color: ${(props) => props.backColor || "#1f1926"};
   font-weight: 600;
   font-size: ${(props) => props.fontSize || "1em"};
   border: 3px solid #fff;
   border-radius: 5px;
-  transition: 0.2s ease-in;
-  background-color: #1f1926;
+  transition: 0.1s ease-in;
   cursor: pointer;
   &.false:disabled {
     cursor: default;
@@ -46,6 +46,7 @@ const Button = (props) => {
         width={width}
         height={height}
         fontSize={fontSize}
+        backColor={back}
         //active : 이메일이 유효성 검사를 통과하지못했다면
         //className을 false로 한다.
         className={active ? "" : "false"}
