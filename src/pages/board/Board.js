@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import BoardHeaderList from "../../Component/Board/BoardHeader";
+import BoardBodyList from "../../Component/Board/BoardBody";
 
 const Board = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Board = () => {
   useEffect(() => {
     switch (category) {
       case "post":
-        setCategorySel("게시물");
+        setCategorySel("일반게시글");
         break;
       case "question":
         setCategorySel("Q&A");
@@ -43,6 +44,12 @@ const Board = () => {
           categoryId={category}
           keyword={keyword}
           setKeyword={setKeyword}
+          setIsLoading={setIsLoading}
+        />
+
+        <BoardBodyList
+          categoryName={categorySel}
+          isLoding={isLoading}
           setIsLoading={setIsLoading}
         />
       </div>

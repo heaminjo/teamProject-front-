@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import BoardHeaderComp from "./BoardStyle";
+import BoardHeaderComp from "./BoardHeaderStyle";
 import Button from "../../util/Button";
 
 const BoardHeaderList = ({ categoryId, keyword, setKeyword, setIsLoading }) => {
@@ -8,6 +8,8 @@ const BoardHeaderList = ({ categoryId, keyword, setKeyword, setIsLoading }) => {
   const isLogin = localStorage.getItem("isLogin");
   const { category, introduction } = (() => {
     console.log("개시판 재정의중");
+
+    console.log("헤더:" + categoryId);
     switch (categoryId) {
       case "post":
         return {
@@ -42,7 +44,6 @@ const BoardHeaderList = ({ categoryId, keyword, setKeyword, setIsLoading }) => {
         </div>
         <div className="writeBox">
           <Button
-            className="writeBtn"
             children="포스터 작성"
             clickEvt={onClickBtn}
             width="150px"
