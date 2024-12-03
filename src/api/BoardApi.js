@@ -18,7 +18,6 @@ const BoardApi = {
   //   );
   // },
   getBoardList: async (page, sort, keyword, category) => {
-    console.log("axios" + category);
     const size = 4;
     return await axios.get(
       Common.KH_DOMAIN +
@@ -46,6 +45,19 @@ const BoardApi = {
       img: img,
     };
     return await axios.post(Common.KH_DOMAIN + "/api/board/new", board);
+  },
+  //좋아요
+  boardHeart: async (boardId, memberEmail) => {
+    return await axios.get(
+      Common.KH_DOMAIN + `/board/detail/great/${boardId}/${memberEmail}`
+    );
+  },
+
+  //좋아요 여부
+  boardIsHeart: async (boardId, memberEmail) => {
+    return await axios.get(
+      Common.KH_DOMAIN + `/board/detail/isgreat/${boardId}/${memberEmail}`
+    );
   },
   // 게시글에 달린 댓글 조회
   commentList: async (boardId) => {
