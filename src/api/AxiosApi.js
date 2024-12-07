@@ -27,28 +27,7 @@ const AxiosApi = {
   memberRegCheck: async (email) => {
     return await axios.get(KH_DOMAIN + `/auth/exists/${email}`);
   },
-  // 게시글 조회
-  boardList: async () => {
-    return await axios.get(KH_DOMAIN + "/api/board");
-  },
-  // 게시글 상세 조회
-  boardDetail: async (boardId) => {
-    return await axios.get(KH_DOMAIN + `/api/board/detail/${boardId}`);
-  },
-  // 게시글 쓰기
-  boardWrite: async (title, content, userId, img) => {
-    const board = {
-      title: title,
-      content: content,
-      userId: userId,
-      img: img,
-    };
-    return await axios.post(KH_DOMAIN + "/api/board/new", board);
-  },
-  // 게시글에 달린 댓글 조회
-  commentList: async (boardId) => {
-    return await axios.get(KH_DOMAIN + `/api/comment/list/${boardId}`);
-  },
+
   // 댓글 쓰기
   commentWrite: async (userId, boardId, content) => {
     const comment = {

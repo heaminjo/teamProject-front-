@@ -37,14 +37,16 @@ const BoardApi = {
     return await axios.get(Common.KH_DOMAIN + `/api/board/detail/${boardId}`);
   },
   // 게시글 쓰기
-  boardWrite: async (title, content, userId, img) => {
+  boardWrite: async (categoryName, title, content, url, email) => {
+    console.log("경로:" + url);
     const board = {
+      memberEmail: email,
+      categoryName: categoryName,
       title: title,
       content: content,
-      userId: userId,
-      img: img,
+      img: url,
     };
-    return await axios.post(Common.KH_DOMAIN + "/api/board/new", board);
+    return await axios.post(Common.KH_DOMAIN + "/board/insert", board);
   },
   //좋아요
   boardHeart: async (boardId, memberEmail) => {

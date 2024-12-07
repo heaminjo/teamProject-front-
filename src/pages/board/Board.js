@@ -24,7 +24,7 @@ const Board = () => {
   //이동한다.
   useEffect(() => {
     switch (category) {
-      case "post":
+      case "common":
         setCategorySel("일반게시글");
         break;
       case "question":
